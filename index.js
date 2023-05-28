@@ -1,3 +1,7 @@
+"use strict";
+exports.__esModule = true;
+exports.injectMain = exports.injectPreload = void 0;
+
 function propertiesName(moduleName) {
   return `get${moduleName}Fields`;
 }
@@ -6,7 +10,7 @@ function proxyName(moduleName) {
   return `${moduleName}Proxy`;
 }
 
-export function injectPreload(moduleName) {
+function injectPreload(moduleName) {
   const { contextBridge, ipcRenderer } = require("electron");
 
   // Get the module names
@@ -26,13 +30,15 @@ export function injectPreload(moduleName) {
   contextBridge.exposeInMainWorld(moduleName, methodProxy);
 }
 
-export function injectMain(moduleName) {
+function injectMain(moduleName) {
+  const { ipcMain } = require("electron");
+
   const obj = require(moduleName);
-  // Get the module names
   const names = Object.getOwnPropertyNames(obj);
 
   // Send module names
   ipcMain.on(propertiesName(moduleName), (event) => {
+    console.log('result names', names)
     event.returnValue = names;
   });
 
@@ -42,3 +48,6 @@ export function injectMain(moduleName) {
     event.returnValue = result;
   });
 }
+
+exports.injectPreload = injectPreload;
+exports.injectMain = injectMain;
