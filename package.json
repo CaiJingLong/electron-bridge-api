@@ -1,6 +1,6 @@
 {
   "name": "electron-bridge-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Export a class from the main process to the renderer process",
   "main": "index.js",
   "scripts": {
