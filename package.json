@@ -1,0 +1,15 @@
+{
+  "name": "electron-bridge-api",
+  "version": "1.0.0",
+  "description": "Export a class from the main process to the renderer process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.4.0"
+  }
+}
