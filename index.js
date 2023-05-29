@@ -44,7 +44,7 @@ function injectMain(moduleName) {
 
   // Handle module
   ipcMain.on(proxyName(moduleName), (event, method, args) => {
-    const result = fs[method](...args);
+    const result = obj[method](...args);
     event.returnValue = result;
   });
 }

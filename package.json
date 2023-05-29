@@ -1,8 +1,9 @@
 {
   "name": "electron-bridge-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Export a class from the main process to the renderer process",
   "main": "index.js",
+  "types": "electron-bridge-api.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +15,7 @@
   "readme": "README.md",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "electron": "^24.4.0"
   }
 }
