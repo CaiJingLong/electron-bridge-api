@@ -8,6 +8,12 @@ npm i electron-bridge-api
 pnpm i electron-bridge-api
 ```
 
+## Effects
+
+This way is **not safe**, you need to confirm the risk of injecting api by yourself.
+
+Because it is a synchronous call, the rendering process may block.
+
 ## Usage
 
 in `preload.js`
@@ -24,6 +30,18 @@ in `main.js`
 const { injectMain } = require('electron-bridge-api')
 
 injectMain('fs')
+
+// And 
+const win = new BrowserWindow({
+    width: 1280,
+    height: 720,
+    webPreferences: {
+      preload: preloadJsPath,
+      nodeIntegration: true, // add the line
+    },
+  });
+
+  win.loadURL('http://localhost:8000');
 ```
 
 ## Use in browser
